@@ -1,0 +1,25 @@
+$color-green: #cbff00;
+$color-black: #1b1b1e;
+
+@mixin green_button {
+  background: #cbff00;
+  font-family: Futura PT;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 46px;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+
+@mixin page_container {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  position: relative;
+  color: white;
+}

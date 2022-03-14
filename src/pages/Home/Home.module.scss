@@ -1,0 +1,11 @@
+@import '../../helpers/const.scss';
+
+.container {
+ @include page_container;
+}
+
+.button_green {
+  @include green_button;
+  width: 30%;
+  height: 93.61px;
+}
