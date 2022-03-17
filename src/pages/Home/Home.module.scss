@@ -1,11 +1,79 @@
 @import '../../helpers/const.scss';
 
-.container {
- @include page_container;
+.up{
+  background: black;
 }
 
-.button_green {
-  @include green_button;
-  width: 30%;
-  height: 93.61px;
+.container {
+  @include page_container;
+  padding-bottom: 8.75%;
+  display: flex;
+  overflow: hidden;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: center;
+    padding: 8% 10% 0;
+  }
+}
+.latech_img {
+  width: 50%;
+  object-fit: contain;
+  padding-left: 6%;
+  box-sizing: border-box;
+  z-index: 2;
+
+  @media (max-width: $tablet) {
+    width: 65%;
+    margin-bottom: 31%;
+    padding: 0;
+    align-self: flex-start;
+  }
+}
+
+.questions_img {
+  display: none;
+
+  @media (max-width: $tablet) {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    width: 25%;
+    right: 12%;
+    top: 15%;
+  }
+}
+
+.box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: $tablet) {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .home_img {
+    width: 65%;
+    object-fit: contain;
+    flex-grow: 1;
+
+    @media (max-width: $tablet) {
+      width: 100%;
+    }
+  }
+
+  .button_green {
+    @include green_button;
+    width: 60%;
+    height: 93.61px;
+
+    @media (max-width: $tablet) {
+      width: 100%;
+      margin-bottom: 17%;
+    }
+  }
 }

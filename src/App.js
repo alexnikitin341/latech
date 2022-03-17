@@ -5,6 +5,7 @@ import Home from './pages/Home/Home';
 import Question from './pages/Question/Question';
 import Rating from './pages/Rating/Rating';
 
+
 function App() {
   return (
     <BrowserRouter>

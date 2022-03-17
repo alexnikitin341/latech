@@ -1,6 +1,8 @@
 $color-green: #cbff00;
 $color-black: #1b1b1e;
 
+$tablet: 720px;
+
 @mixin green_button {
   background: #cbff00;
   font-family: Futura PT;
@@ -10,7 +12,9 @@ $color-black: #1b1b1e;
   line-height: 46px;
   text-align: center;
   cursor: pointer;
-  color: white;
+  color: black;
+  border-radius: 20px;
+  border: none;
 }
 
 @mixin page_container {
