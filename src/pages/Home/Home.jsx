@@ -7,7 +7,6 @@ import latech_img from '../../assets/latech.png';
 import questions_img from '../../assets/questions.png';
 
 import styles from './Home.module.scss';
-import { useFormContext } from '../../helpers/context';
 
 export default function Home() {
   const [token, setToken] = useState();
@@ -21,7 +20,7 @@ export default function Home() {
       localStorage.setItem('tokenId', queryToken);
       navigate('/');
     }
-  }, [queryToken]);
+  }, [queryToken, navigate]);
 
   useEffect(() => {
     const token = localStorage.getItem('tokenId');

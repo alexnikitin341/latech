@@ -2,30 +2,80 @@
 
 .container {
   @include page_container;
+  padding-bottom: 8.75%;
+  padding-top: 2%;
+
+  display: flex;
+  overflow: hidden;
+
+  @media (max-width: $tablet) {
+    flex-direction: column;
+    align-items: center;
+    padding: 8% 10% 0;
+  }
+}
+
+.description {
+  width: 89%;
+  box-sizing: border-box;
+  padding-left: 5%;
+  margin: 0;
+  font-size: 193%;
+  @media (max-width: $tablet) {
+    width: 100%;
+    padding: 0;
+    font-size: 126%;
+    margin-bottom: 15%;
+  }
+}
+
+.box {
+  width: 72%;
+  box-sizing: border-box;
+  padding-left: 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    padding: 0;
+    flex-grow: 1;
+  }
+
+  .box_prize {
+    width: 48%;
+    flex-grow: 1;
+    p {
+      font-size: 295%;
+      margin: 0;
+      margin-bottom: 7%;
+    }
+    span {
+      font-size: 168%;
+      color: $color-green;
+    }
+    @media (max-width: $tablet) {
+      width: 100%;
+      padding: 0;
+      p {
+        font-size: 250%;
+        margin-bottom: 5%;
+      }
+      span {
+        font-size: 123%;
+      }
+    }
+  }
 }
 
 .button_green {
   @include green_button;
-  width: 100%;
+  width: 84%;
   height: 93.61px;
-  margin-bottom: 28px;
-}
 
-.label {
-  font-family: Futura PT;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 54px;
-  line-height: 69px;
-  text-align: center;
-}
-
-.description {
-  font-family: Futura PT;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 30px;
-  line-height: 38px;
-  text-align: center;
-  flex-grow: 1;
+  @media (max-width: $tablet) {
+    width: 100%;
+    margin-bottom: 17%;
+  }
 }

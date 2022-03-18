@@ -13,7 +13,7 @@ instance.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  window.location.href = '/';
+  // window.location.href = '/';
   return config;
 });
 

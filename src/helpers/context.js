@@ -1,11 +1,22 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import axios from 'axios';
+import { getAllQuestions } from './request';
 
 export const FormContext = createContext();
 
-// eslint-disable-next-line react/prop-types
 export const FormProvider = ({ children }) => {
   const [allQuestions, setAllQuestions] = useState([]);
+
+  const handleGetAllQuestions = async () => {
+    const data = await getAllQuestions();
+
+    setAllQuestions(data);
+  };
+
+  useEffect(() => {
+    if (allQuestions.length === 0) {
+      handleGetAllQuestions();
+    }
+  }, []);
 
   return (
     <FormContext.Provider
