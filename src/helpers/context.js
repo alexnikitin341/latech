@@ -7,9 +7,9 @@ export const FormProvider = ({ children }) => {
   const [allQuestions, setAllQuestions] = useState([]);
 
   const handleGetAllQuestions = async () => {
-    const data = await getAllQuestions();
+    const {tasks} = await getAllQuestions();
 
-    setAllQuestions(data);
+    setAllQuestions(tasks);
   };
 
   useEffect(() => {

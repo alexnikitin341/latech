@@ -4,11 +4,11 @@ import { useFormContext } from '../../helpers/context';
 import styles from './Description.module.scss';
 
 export default function Description() {
-  const { allQuestion } = useFormContext();
+  const { allQuestions } = useFormContext();
   const navigate = useNavigate();
 
   const handleStartGame = () => {
-    const firstQuestion = allQuestion?.[0]?.id || 5;
+    const firstQuestion = allQuestions?.[0]?.id || 5;
     navigate(`/question/${firstQuestion}`);
   };
 
