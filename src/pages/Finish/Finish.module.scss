@@ -1,0 +1,61 @@
+@import '../../helpers/const.scss';
+
+.container {
+  @include page_container;
+  padding-bottom: 8.75%;
+  padding-top: 2%;
+  padding: 2% 70px 8%;
+
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+
+  @media (max-width: $tablet) {
+    align-items: center;
+    padding: 8% 10% 0;
+  }
+
+  h1 {
+    color: white;
+    width: 60%;
+    font-size: 50px;
+    z-index: 2;
+  }
+
+  p {
+    width: 60%;
+    flex-grow: 1;
+    color: $color-green;
+    font-size: 50px;
+    z-index: 2;
+  }
+}
+
+.button_green {
+  @include green_button;
+  width: 84%;
+  max-width: 440px;
+  height: 93.61px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  z-index: 2;
+
+  @media (max-width: $tablet) {
+    width: 100%;
+    margin-bottom: 17%;
+  }
+
+  img {
+    height: 30%;
+    margin: 10%;
+  }
+}
+
+.stars {
+  position: absolute;
+  z-index: 1;
+  width: 26%;
+  top: 27%;
+  left: 43%;
+}

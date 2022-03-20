@@ -1,21 +1,35 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { getMe, getRating } from '../../helpers/request';
+import lupe from '../../assets/lupe.svg';
+import { useDebounce } from '../../helpers/hooks';
 import styles from './Rating.module.scss';
-import { getRating } from '../../helpers/request';
 
 export default function Rating() {
   const [rating, setRating] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState('');
 
-  const handleGetRating = async () => {
+  const debouncedSearch = useDebounce(search, 500);
+
+  const handleGetRating = async (value) => {
     setLoading(true);
-    const data = await getRating(3);
+    await getMe();
+    const data = await getRating(3, value);
     setRating(data.rating);
     setLoading(false);
   };
 
+  // useEffect(() => {
+  //   handleGetRating();
+  // }, []);
+
   useEffect(() => {
-    handleGetRating();
-  }, []);
+    handleGetRating(debouncedSearch);
+  }, [debouncedSearch]);
+
+  const handleSearch = ({ target: { value } }) => {
+    setSearch(value);
+  };
 
   if (loading) {
     return <div className={styles.container}> ...loading</div>;
@@ -23,11 +37,32 @@ export default function Rating() {
 
   return (
     <div className={styles.container}>
-      {rating.map((el) => (
-        <div>
-          <p></p>
+      <h1>Лидерборд</h1>
+      <div className={styles.box}>
+        <div className={styles.search}>
+          <input
+            value={search}
+            onChange={handleSearch}
+            placeholder='Ведите имя'
+          />
+          <img src={lupe} alt='lupe' />
         </div>
-      ))}
+        <div className={styles.table}>
+          <p className={styles.title}>Место</p>
+          <p className={styles.title}>Участник</p>
+          <p className={styles.title}>Результат</p>
+
+          {[...rating].map(({ place, score, solutions, name }, i) => (
+            <Fragment key={`place_${i}`}>
+              <p className={place < 4 ? styles.green : ''}>{place}</p>
+              <p className={place < 4 ? styles.green : ''}>{name}</p>
+              <p className={place < 4 ? styles.green : ''}>
+                {score}/{solutions.length}
+              </p>
+            </Fragment>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

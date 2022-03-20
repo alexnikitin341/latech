@@ -79,9 +79,11 @@ export const getAllNominations = async () => {
   }
 };
 
-export const getRating = async (ratingId) => {
+export const getRating = async (ratingId, search = '') => {
+  const query = `search=${search}&page=1`;
+  const way = `contests/${GAME_ID}/rating/${ratingId}?${query}`;
   try {
-    const { data } = await axios.get(`contests/${GAME_ID}/rating/${ratingId}`);
+    const { data } = await axios.get(way);
 
     return data;
   } catch (error) {
