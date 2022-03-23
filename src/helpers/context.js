@@ -6,12 +6,14 @@ export const FormContext = createContext();
 export const FormProvider = ({ children }) => {
   const [allQuestions, setAllQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [count, setCount] = useState(0);
 
   const handleGetAllQuestions = async () => {
     setLoading(true);
     const { tasks } = await getAllQuestions();
-
-    setAllQuestions(tasks);
+    if (tasks) {
+      setAllQuestions(tasks);
+    }
     setLoading(false);
   };
 
@@ -19,7 +21,7 @@ export const FormProvider = ({ children }) => {
     if (allQuestions.length === 0) {
       handleGetAllQuestions();
     }
-  }, []);
+  }, [count]);
 
   return (
     <FormContext.Provider
@@ -27,6 +29,7 @@ export const FormProvider = ({ children }) => {
         allQuestions,
         setAllQuestions,
         loading,
+        setCount,
       }}
     >
       {children}

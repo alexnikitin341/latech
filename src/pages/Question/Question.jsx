@@ -8,7 +8,7 @@ import arrowRight from '../../assets/arrow_right.svg';
 export default function Question() {
   const [question, setQuestion] = useState({});
   const [changedQuestionIndex, setChangeQuestionIndex] = useState();
-  const { allQuestions } = useFormContext();
+  const { allQuestions, setCount } = useFormContext();
   const [answersWithImg, setAnswersWithImg] = useState([]);
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
@@ -47,7 +47,7 @@ export default function Question() {
   };
 
   const goToNextQuestion = () => {
-    const currentIndexQuestion = allQuestions.findIndex((question) => +question.id === +id);
+    const currentIndexQuestion = (allQuestions || []).findIndex((question) => +question.id === +id);
 
     if (currentIndexQuestion + 1 && currentIndexQuestion !== allQuestions.length - 1) {
       const nextQuestionId = currentIndexQuestion + 1;
@@ -61,6 +61,7 @@ export default function Question() {
 
   useEffect(() => {
     handleGetQuestion(id);
+    setCount((prev) => prev + 1);
   }, [id]);
 
   useEffect(() => {
@@ -102,7 +103,7 @@ export default function Question() {
           </div>
           <div className={styles.next_question}>
             <span>
-              {allQuestions.findIndex((question) => +question.id === +id) + 1}
+              {(allQuestions || []).findIndex((question) => +question.id === +id) + 1}
               /15
             </span>
             <button className={styles.button_green} onClick={goToNextQuestion}>
