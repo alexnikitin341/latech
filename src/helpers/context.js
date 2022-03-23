@@ -5,11 +5,14 @@ export const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
   const [allQuestions, setAllQuestions] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleGetAllQuestions = async () => {
-    const {tasks} = await getAllQuestions();
+    setLoading(true);
+    const { tasks } = await getAllQuestions();
 
     setAllQuestions(tasks);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -23,6 +26,7 @@ export const FormProvider = ({ children }) => {
       value={{
         allQuestions,
         setAllQuestions,
+        loading,
       }}
     >
       {children}

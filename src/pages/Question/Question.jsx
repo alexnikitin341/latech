@@ -47,14 +47,9 @@ export default function Question() {
   };
 
   const goToNextQuestion = () => {
-    const currentIndexQuestion = allQuestions.findIndex(
-      (question) => +question.id === +id
-    );
+    const currentIndexQuestion = allQuestions.findIndex((question) => +question.id === +id);
 
-    if (
-      currentIndexQuestion + 1 &&
-      currentIndexQuestion !== allQuestions.length - 1
-    ) {
+    if (currentIndexQuestion + 1 && currentIndexQuestion !== allQuestions.length - 1) {
       const nextQuestionId = currentIndexQuestion + 1;
       setAnswer();
       navigate(`/question/${allQuestions[nextQuestionId].id}`);
@@ -70,9 +65,7 @@ export default function Question() {
 
   useEffect(() => {
     if (question?.task?.description && question?.task?.options) {
-      const srcs = question?.task?.description.match(
-        /(?<=src=")([\s\S]+?)(?=")/g
-      );
+      const srcs = question?.task?.description.match(/(?<=src=")([\s\S]+?)(?=")/g);
       const res = question?.task?.options.map((option, i) => ({
         option,
         src: srcs[i],
@@ -92,23 +85,16 @@ export default function Question() {
       {answer ? (
         <div className={styles.answer}>
           <div className={styles.description}>
-            {!answer?.comments && (
-              <p className={styles.plug}>На этот вопрос уже был дан ответ</p>
-            )}
+            {!answer?.comments && <p className={styles.plug}>На этот вопрос уже был дан ответ</p>}
             {(answer?.comments || []).map((comment, i) => {
               const rigthIndex = +answer?.right_answer;
               const isRight = rigthIndex === i;
 
-              const className = isRight
-                ? styles.green
-                : i === changedQuestionIndex && styles.red;
+              const className = isRight ? styles.green : i === changedQuestionIndex && styles.red;
 
               return (
-                <div className={styles.comment_container}>
-                  <div className={`${styles.comment} ${className}`}>
-                    {comment}
-                  </div>
-
+                <div key={i} className={styles.comment_container}>
+                  <div className={`${styles.comment} ${className}`}>{comment}</div>
                   <p className={styles.option}>{answersWithImg?.[i]?.option}</p>
                 </div>
               );
@@ -127,15 +113,8 @@ export default function Question() {
       ) : (
         <div className={styles.answers_container}>
           {answersWithImg.map(({ src, option }, i) => (
-            <div
-              key={`answers_${i}`}
-              className={`${styles.answer_box} ${i === 1 && styles.center}`}
-            >
-              <img
-                src={src}
-                alt={`img${option}`}
-                onClick={() => handleClickAnswer(i)}
-              />
+            <div key={`answers_${i}`} className={`${styles.answer_box} ${i === 1 && styles.center}`}>
+              <img src={src} alt={`img${option}`} onClick={() => handleClickAnswer(i)} />
               <p className={styles.option} onClick={() => handleClickAnswer(i)}>
                 {option}
               </p>

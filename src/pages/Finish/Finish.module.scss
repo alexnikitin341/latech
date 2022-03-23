@@ -12,7 +12,7 @@
 
   @media (max-width: $tablet) {
     align-items: center;
-    padding: 8% 10% 0;
+    padding: 8% 10% 4%;
   }
 
   h1 {
@@ -20,6 +20,11 @@
     width: 60%;
     font-size: 50px;
     z-index: 2;
+
+    @media (max-width: $tablet) {
+      width: 100%;
+      font-size: 24px;
+    }
   }
 
   p {
@@ -28,6 +33,11 @@
     color: $color-green;
     font-size: 50px;
     z-index: 2;
+
+    @media (max-width: $tablet) {
+      width: 100%;
+      font-size: 24px;
+    }
   }
 }
 
@@ -53,9 +63,20 @@
 }
 
 .stars {
+  display: block;
   position: absolute;
   z-index: 1;
   width: 26%;
   top: 27%;
-  left: 43%;
+  right: 25%;
+
+  @media (max-width: 1000px) {
+    display: none;
+  }
+
+  @media (max-width: $tablet) {
+    display: block;
+    position: static;
+    width: 100%;
+  }
 }
