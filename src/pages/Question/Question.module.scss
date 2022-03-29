@@ -43,6 +43,16 @@ h2 {
   flex-grow: 1;
   width: 30%;
 
+  &:hover {
+    img {
+      outline: 5px solid $color-green;
+    }
+    p {
+      background: $color-green;
+      color: black;
+    }
+  }
+
   @media (max-width: $tablet) {
     width: 100%;
     flex-direction: row;
@@ -120,10 +130,11 @@ h2 {
   width: 100%;
   aspect-ratio: 1/1;
   box-sizing: border-box;
-  padding: 3%;
   color: black;
   font-size: 16px;
-  
+  padding: 7%;
+  font-weight: 600;
+
   @media (max-width: $tablet) {
     width: 54%;
   }

@@ -5,16 +5,18 @@ $tablet: 720px;
 
 @mixin green_button {
   background: #cbff00;
-  font-family: Futura PT;
   font-style: normal;
-  font-weight: 600;
-  font-size: 36px;
+  font-weight: 300;
+  font-size: 56px;
   line-height: 46px;
   text-align: center;
   cursor: pointer;
   color: black;
   border-radius: 20px;
   border: none;
+  @media (max-width: $tablet) {
+    font-size: 36px;
+  }
 }
 
 @mixin page_container {
