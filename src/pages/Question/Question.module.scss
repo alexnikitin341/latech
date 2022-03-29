@@ -52,7 +52,9 @@ h2 {
 
   img {
     aspect-ratio: 1 / 1;
-    border-radius: 5%;
+    cursor: pointer;
+    object-fit: contain;
+    background-color: rgb(249, 249, 249);
 
     @media (max-width: $tablet) {
       width: 53%;
@@ -67,11 +69,12 @@ h2 {
   justify-content: center;
   padding: 5%;
   box-sizing: border-box;
-  border: 1px solid $color-green;
+  border: 3px solid $color-green;
   border-radius: 10px;
   margin: 0;
   margin-top: 12%;
   font-size: 245%;
+  cursor: pointer;
 
   @media (max-width: $tablet) {
     width: 42%;

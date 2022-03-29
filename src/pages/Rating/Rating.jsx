@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { getMe, getRating } from '../../helpers/request';
 import lupe from '../../assets/lupe.svg';
+import stars_rating from '../../assets/stars_rating.png';
 import { useDebounce } from '../../helpers/hooks';
 import styles from './Rating.module.scss';
 
@@ -40,11 +41,7 @@ export default function Rating() {
       <h1>Лидерборд</h1>
       <div className={styles.box}>
         <div className={styles.search}>
-          <input
-            value={search}
-            onChange={handleSearch}
-            placeholder='Ведите имя'
-          />
+          <input value={search} onChange={handleSearch} placeholder='Ведите имя' />
           <img src={lupe} alt='lupe' />
         </div>
         <div className={styles.table}>
@@ -63,6 +60,8 @@ export default function Rating() {
           ))}
         </div>
       </div>
+
+      <img className={styles.stars_rating} src={stars_rating} alt='stars_rating' />
     </div>
   );
 }

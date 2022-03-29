@@ -1,32 +1,70 @@
 @import '../../helpers/const.scss';
 
+/* ===== Scrollbar CSS ===== */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: $color-green #000000;
+  }
+
+  *::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #000000;
+    border: 1px solid #cbff00;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: $color-green;
+  }
+
 .container {
   @include page_container;
   padding: 4%;
   display: flex;
-  flex-direction: column;
-
+  flex-wrap: wrap;
   @media (max-width: $tablet) {
     align-items: center;
     padding: 8% 10% 30px;
+    flex-direction: column;
+  }
+}
+
+.box {
+  width: 60%;
+  border: 1px solid $color-green;
+  padding: 30px 5px;
+  height: 512px;
+  @media (max-width: $tablet) {
+    height: 580px;
+    width: 100%;
+  }
+}
+
+.stars_rating {
+  width: 38%;
+  height: 574px;
+  @media (max-width: $tablet) {
+    display: none;
   }
 }
 
 .table {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  height: 400px;
+  overflow: auto;
+  @media (max-width: $tablet) {
+    height: 500px;
+  }
 }
 
 h1 {
   color: $color-green;
   margin: 0;
   margin-bottom: 40px;
-}
-
-.box {
   width: 100%;
-  border: 1px solid $color-green;
-  padding: 30px 5px;
 }
 
 .search {

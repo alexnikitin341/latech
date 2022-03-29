@@ -34,7 +34,6 @@ export default function Question() {
     setLoading(true);
 
     const data = await postAnswer({
-      // text: question?.task?.options?.[index],
       text: index,
       id,
     });
@@ -96,7 +95,6 @@ export default function Question() {
               return (
                 <div key={i} className={styles.comment_container}>
                   <div className={`${styles.comment} ${className}`}>{comment}</div>
-                  <p className={styles.option}>{answersWithImg?.[i]?.option}</p>
                 </div>
               );
             })}
