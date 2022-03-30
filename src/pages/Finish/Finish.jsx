@@ -4,15 +4,20 @@ import eyes from '../../assets/eyes.png';
 import stars from '../../assets/stars.png';
 
 import styles from './Finish.module.scss';
+import { useEffect } from 'react';
 
 export default function Finish() {
-  const { allQuestions, loading } = useFormContext();
+  const { allQuestions, loading, setCount } = useFormContext();
   const quantityRightQuestion = allQuestions.filter((el) => Number(el?.solutions?.[0]?.score)).length;
   const navigate = useNavigate();
 
   const handleRating = () => {
     navigate(`/rating`);
   };
+
+  useEffect(() => {
+    setCount((prev) => prev + 1);
+  }, []);
 
   if (loading) {
     return <div className={styles.container}>...loading</div>;
