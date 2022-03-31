@@ -28,6 +28,22 @@
     padding: 8% 10% 30px;
     flex-direction: column;
   }
+
+  p {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: 33px;
+    line-height: 15px;
+    font-weight: 300;
+    height: 33px;
+    white-space: nowrap;
+    @media (max-width: $tablet) {
+      font-size: 18px;
+      line-height: 15px;
+      font-weight: 300;
+      height: 15px;
+    }
+  }
 }
 
 .box {
@@ -112,23 +128,6 @@ h1 {
 
 .green {
   color: $color-green;
-}
-
-p {
-  margin: 0;
-  margin-bottom: 15px;
-  font-size: 33px;
-  line-height: 15px;
-  font-weight: 300;
-  height: 33px;
-  white-space: nowrap;
-  overflow: hidden;
-  @media (max-width: $tablet) {
-    font-size: 18px;
-    line-height: 15px;
-    font-weight: 300;
-    height: 15px;
-  }
 }
 
 .title {

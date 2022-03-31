@@ -13,13 +13,17 @@
     padding: 8% 10% 30px;
     width: 100vw;
   }
-}
 
-h2 {
-  font-size: 67.46pt;
-  line-height: 86pt;
-  margin: 0;
-  margin-bottom: 5%;
+  h2 {
+    font-size: 67.46px;
+    line-height: 86px;
+    margin: 0;
+    margin-bottom: 5%;
+    @media (max-width: $tablet) {
+      font-size: 27px;
+      line-height: 33px;
+    }
+  }
 }
 
 .answers_container {
@@ -27,14 +31,14 @@ h2 {
   display: flex;
 
   .center {
-    margin: 0 3%;
+    margin: 0 60px;
   }
 
   @media (max-width: $tablet) {
     flex-direction: column;
 
     .center {
-      margin: 3% 0;
+      margin: 20px 0;
     }
   }
 }
@@ -63,7 +67,7 @@ h2 {
   }
 
   img {
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 537/490;
     cursor: pointer;
     object-fit: contain;
     background-color: rgb(249, 249, 249);
@@ -82,7 +86,7 @@ h2 {
   padding: 5%;
   box-sizing: border-box;
   border: 3px solid $color-green;
-  border-radius: 10px;
+  border-radius: 16px;
   margin: 0;
   margin-top: 12%;
   font-size: 245%;
@@ -130,16 +134,26 @@ h2 {
 .comment {
   background: white;
   width: 100%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 537/490;
   box-sizing: border-box;
   color: black;
-  font-size: 33pt;
-  line-height: 35pt;
-  padding: 7%;
+  font-size: 33px;
+  line-height: 35px;
   font-weight: 600;
+  padding: 50px 40px;
 
   @media (max-width: $tablet) {
     width: 54%;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 20px 8px;
+  }
+}
+
+.option_comment {
+  display: none;
+  @media (max-width: $tablet) {
+    display: flex;
   }
 }
 
@@ -180,17 +194,23 @@ h2 {
     align-items: center;
     justify-content: center;
     margin: 0;
+    border-radius: 11px;
 
     @media (max-width: $tablet) {
       width: 45%;
       height: 50px;
+      border-radius: 11px;
     }
   }
 
   span {
     color: $color-green;
-    font-size: 67.46pt;
+    font-size: 67.46px;
     line-height: 86px;
+    @media (max-width: $tablet) {
+      font-size: 35px;
+      line-height: 86px;
+    }
   }
 
   img {
