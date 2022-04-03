@@ -38,29 +38,30 @@ export default function Rating() {
 
   return (
     <div className={styles.container}>
-      <h1>Лидерборд</h1>
-      <div className={styles.box}>
-        <div className={styles.search}>
-          <input value={search} onChange={handleSearch} placeholder='Ведите имя' />
-          <img src={lupe} alt='lupe' />
-        </div>
-        <div className={styles.table}>
-          <p className={styles.title}>Место</p>
-          <p className={styles.title}>Участник</p>
-          <p className={styles.title}>Результат</p>
+      <div className={styles.main_container}>
+        <h1>Лидерборд</h1>
+        <div className={styles.box}>
+          <div className={styles.search}>
+            <input value={search} onChange={handleSearch} placeholder='Ведите имя' />
+            <img src={lupe} alt='lupe' />
+          </div>
+          <div className={styles.table}>
+            <p className={styles.title}>Место</p>
+            <p className={styles.title}>Участник</p>
+            <p className={styles.title}>Результат</p>
 
-          {[...rating].map(({ place, score, solutions, name }, i) => (
-            <Fragment key={`place_${i}`}>
-              <p className={place < 4 ? styles.green : ''}>{place}</p>
-              <p className={place < 4 ? styles.green : ''}>{name}</p>
-              <p className={place < 4 ? styles.green : ''}>
-                {score}/{solutions.length}
-              </p>
-            </Fragment>
-          ))}
+            {[...rating].map(({ place, score, solutions, name }, i) => (
+              <Fragment key={`place_${i}`}>
+                <p className={place < 4 ? styles.green : ''}>{place}</p>
+                <p className={place < 4 ? styles.green : ''}>{name}</p>
+                <p className={place < 4 ? styles.green : ''}>
+                  {score}/{solutions.length}
+                </p>
+              </Fragment>
+            ))}
+          </div>
         </div>
       </div>
-
       <img className={styles.stars_rating} src={stars_rating} alt='stars_rating' />
     </div>
   );

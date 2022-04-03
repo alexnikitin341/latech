@@ -66,6 +66,7 @@
     @include green_button;
     width: 60%;
     height: 120px;
+    font-family: 'Latech';
 
     @media (max-width: $tablet) {
       width: 100%;

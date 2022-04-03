@@ -4,6 +4,7 @@
   @include page_container;
   padding-bottom: 8.75%;
   padding: 3.5% 96px 5%;
+  max-width: 100vw;
 
   display: flex;
   overflow: hidden;
@@ -21,24 +22,31 @@
     line-height: 90px;
     font-weight: 300;
     z-index: 2;
+    margin-bottom: 120px;
 
     @media (max-width: $tablet) {
       width: 100%;
-      font-size: 24px;
+      font-size: 25px;
+      line-height: 32px;
+      margin-bottom: 47px;
     }
   }
 
   p {
     width: 60%;
-    flex-grow: 1;
     color: $color-green;
     font-size: 71px;
     line-height: 90px;
     z-index: 2;
+    margin: 0;
+    margin-bottom: 70px;
+    flex-grow: 1;
 
     @media (max-width: $tablet) {
       width: 100%;
-      font-size: 24px;
+      font-size: 25px;
+      line-height: 32px;
+      flex-grow: 0;
     }
   }
 }
@@ -68,7 +76,7 @@
     height: 50%;
     margin: 6%;
     @media (max-width: $tablet) {
-      height: 40%;
+      height: 50%;
       margin: 10%;
     }
   }
