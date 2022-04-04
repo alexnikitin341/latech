@@ -32,9 +32,7 @@ export const getMe = async () => {
 
 export const getAllQuestions = async () => {
   try {
-    const { data } = await axios.get(
-      `/contests/${GAME_ID}/nominations/${NOMINATION_ID}/tasks`
-    );
+    const { data } = await axios.get(`/contests/${GAME_ID}/nominations/${NOMINATION_ID}/tasks`);
 
     return data;
   } catch (error) {
@@ -44,9 +42,7 @@ export const getAllQuestions = async () => {
 
 export const getQuestion = async (id) => {
   try {
-    const { data } = await axios.get(
-      `contests/${GAME_ID}/nominations/${NOMINATION_ID}/tasks/${id}`
-    );
+    const { data } = await axios.get(`contests/${GAME_ID}/nominations/${NOMINATION_ID}/tasks/${id}`);
 
     return data;
   } catch (error) {
@@ -56,12 +52,9 @@ export const getQuestion = async (id) => {
 
 export const postAnswer = async ({ text, id }) => {
   try {
-    const { data } = await axios.post(
-      `contests/${GAME_ID}/nominations/${NOMINATION_ID}/tasks/${id}/answer`,
-      {
-        text,
-      }
-    );
+    const { data } = await axios.post(`contests/${GAME_ID}/nominations/${NOMINATION_ID}/tasks/${id}/answer`, {
+      text,
+    });
 
     return data;
   } catch (error) {
@@ -73,6 +66,15 @@ export const getAllNominations = async () => {
   try {
     const { data } = await axios.get(`/contests/${GAME_ID}/nominations`);
 
+    return data;
+  } catch (error) {
+    return { error };
+  }
+};
+
+export const getAllRating = async () => {
+  try {
+    const { data } = await axios.get(`contests/${GAME_ID}/rating`);
     return data;
   } catch (error) {
     return { error };

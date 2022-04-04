@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState } from 'react';
-import { getMe, getRating } from '../../helpers/request';
+import { getAllRating, getRating } from '../../helpers/request';
+import { useDebounce } from '../../helpers/hooks';
 import lupe from '../../assets/lupe.svg';
 import stars_rating from '../../assets/stars_rating.png';
-import { useDebounce } from '../../helpers/hooks';
 import styles from './Rating.module.scss';
 
 export default function Rating() {
@@ -12,25 +12,22 @@ export default function Rating() {
 
   const debouncedSearch = useDebounce(search, 500);
 
+  const handleSearch = ({ target: { value } }) => {
+    setSearch(value);
+  };
+
   const handleGetRating = async (value) => {
     setLoading(true);
-    await getMe();
-    const data = await getRating(3, value);
+    const allRating = await getAllRating();
+    const ratingId = allRating?.ratings?.[0]?.id;
+    const data = await getRating(ratingId, value);
     setRating(data.rating);
     setLoading(false);
   };
 
-  // useEffect(() => {
-  //   handleGetRating();
-  // }, []);
-
   useEffect(() => {
     handleGetRating(debouncedSearch);
   }, [debouncedSearch]);
-
-  const handleSearch = ({ target: { value } }) => {
-    setSearch(value);
-  };
 
   if (loading) {
     return <div className={styles.container}> ...loading</div>;
