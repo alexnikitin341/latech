@@ -18,8 +18,8 @@
   h1 {
     color: white;
     width: 60%;
-    font-size: 71px;
-    line-height: 90px;
+    font-size: 3.6vw;
+    line-height: 4vw;
     font-weight: 300;
     z-index: 2;
     margin-bottom: 120px;
@@ -35,8 +35,8 @@
   p {
     width: 60%;
     color: $color-green;
-    font-size: 71px;
-    line-height: 90px;
+    font-size: 3.6vw;
+    line-height: 4vw;
     z-index: 2;
     margin: 0;
     margin-bottom: 70px;
@@ -88,7 +88,7 @@
   z-index: 1;
   width: 24%;
   top: 33%;
-  right: 32%;
+  right: 16%;
 
   @media (max-width: 1000px) {
     display: none;
