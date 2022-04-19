@@ -4,39 +4,7 @@ import { getQuestion, postAnswer } from '../../helpers/request';
 import { useFormContext } from '../../helpers/context';
 import styles from './Question.module.scss';
 import arrowRight from '../../assets/arrow_right.svg';
-const mockAnswer = {
-  status: 'success',
-  solution: {
-    id: 479,
-    task_id: 5,
-    team_id: 61,
-    user_id: 58,
-    title: null,
-    text: '0',
-    goal: null,
-    file: null,
-    created_at: '2022-03-31T16:26:25.000000Z',
-    updated_at: '2022-03-31T16:36:46.000000Z',
-    score: 0,
-    start_at: '2022-03-31 19:26:25',
-    end_at: '2022-03-31T16:36:46.780201Z',
-    language: null,
-    left_screen: 0,
-    video_id: null,
-    starred: null,
-    potential: null,
-    ready_leader: null,
-    deleted_at: null,
-    link_to_project: null,
-    file_download: null,
-  },
-  comments: [
-    '1. \u0414\u0415\u0420\u0411\u0418 \u2014 \u0442\u0443\u0444\u043b\u0438 \u0441 \u043e\u0442\u043a\u0440\u044b\u0442\u043e\u0439 \u0448\u043d\u0443\u0440\u043e\u0432\u043a\u043e\u0439, \u0432 \u043a\u043e\u0442\u043e\u0440\u044b\u0445 \u0431\u043e\u043a\u043e\u0432\u044b\u0435 \u0441\u0442\u043e\u0440\u043e\u043d\u044b \u043d\u0430\u0448\u0438\u0442\u044b \u043f\u043e\u0432\u0435\u0440\u0445 \u043f\u0435\u0440\u0435\u0434\u043d\u0435\u0439 \u0447\u0430\u0441\u0442\u0438 (\u0431\u0435\u0440\u0446\u044b \u043d\u0430\u0448\u0438\u0442\u044b \u043f\u043e\u0432\u0435\u0440\u0445 \u0441\u043e\u044e\u0437\u043a\u0438).',
-    '2. \u0427\u0418\u041d\u041e\u0421 \u2014 \u0441\u0432\u043e\u0431\u043e\u0434\u043d\u044b\u0435 \u043c\u044f\u0433\u043a\u0438\u0435 \u0448\u0442\u0430\u043d\u044b \u0438\u0437 \u043f\u0440\u043e\u0447\u043d\u043e\u0433\u043e \u043b\u0435\u0433\u043a\u043e\u0433\u043e \u0445\u043b\u043e\u043f\u043a\u0430 \u0438\u043b\u0438 \u043b\u044c\u043d\u0430.',
-    '3. \u0427\u0415\u0421\u041b\u0418 \u2014 \u043a\u043e\u0436\u0430\u043d\u044b\u0435 \u0431\u043e\u0442\u0438\u043d\u043a\u0438 \u0432\u044b\u0441\u043e\u0442\u043e\u0439 \u0434\u043e \u043b\u043e\u0434\u044b\u0436\u043a\u0438, \u0441 \u0442\u043e\u043d\u043a\u043e\u0439 \u043f\u043e\u0434\u043e\u0448\u0432\u043e\u0439, \u0447\u0443\u0442\u044c \u0437\u0430\u043e\u0441\u0442\u0440\u0435\u043d\u043d\u044b\u043c \u0438 \u0441\u043a\u0440\u0443\u0433\u043b\u0435\u043d\u043d\u044b\u043c \u043d\u043e\u0441\u043a\u043e\u043c. \u0425\u0430\u0440\u0430\u043a\u0442\u0435\u0440\u043d\u043e\u0435 \u0440\u043e\u0434\u043e\u0432\u043e\u0435 \u043e\u0442\u043b\u0438\u0447\u0438\u0435 \u2013 \u0432\u0441\u0442\u0430\u0432\u043a\u0438 \u0438\u0437 \u0440\u0435\u0437\u0438\u043d\u044b \u043f\u043e \u0431\u043e\u043a\u0430\u043c, \u0438\u0434\u0443\u0449\u0438\u0435 \u043e\u0442 \u0441\u0430\u043c\u043e\u0433\u043e \u0432\u0435\u0440\u0445\u0430 \u0431\u043e\u0442\u0438\u043d\u043a\u0430 \u043f\u043e\u0447\u0442\u0438 \u0434\u043e \u043f\u043e\u0434\u043e\u0448\u0432\u044b.',
-  ],
-  right_answer: 2,
-};
+
 export default function Question() {
   const [question, setQuestion] = useState({});
   const [changedQuestionIndex, setChangeQuestionIndex] = useState();
@@ -44,7 +12,7 @@ export default function Question() {
   const [answersWithImg, setAnswersWithImg] = useState([]);
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
-  console.log('---answer', answer);
+
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -97,7 +65,14 @@ export default function Question() {
 
   useEffect(() => {
     if (question?.task?.description && question?.task?.options) {
-      const srcs = question?.task?.description.match(/(?<=src=")([\s\S]+?)(?=")/g);
+      const p = question?.task?.description.split('src="');
+      const z = p.map((el) => el.split('">'));
+      const srcs = z.reduce((acc, el, i) => {
+        if (i === 0) {
+          return acc;
+        }
+        return [...acc, el[0]];
+      }, []);
       const res = question?.task?.options.map((option, i) => ({
         option,
         src: srcs[i],
@@ -127,7 +102,7 @@ export default function Question() {
               return (
                 <div key={i} className={styles.comment_container}>
                   <div className={`${styles.comment} ${className}`}>{comment}</div>
-                  <p className={`${styles.option} ${styles.option_comment}`}>{i+1}</p>
+                  <p className={`${styles.option} ${styles.option_comment}`}>{i + 1}</p>
                 </div>
               );
             })}
