@@ -63,7 +63,7 @@ export default function Home() {
       <div className={styles.box}>
         <img className={styles.home_img} src={home_img} alt='home_img' />
         <button className={styles.button_green} onClick={() => handleStartGame()}>
-          ИГРАТЬ
+          играть
         </button>
       </div>
     </div>

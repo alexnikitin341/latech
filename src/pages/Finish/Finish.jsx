@@ -1,22 +1,32 @@
 import { useNavigate } from 'react-router-dom';
-import { useFormContext } from '../../helpers/context';
+import { useEffect, useState } from 'react';
 import eyes from '../../assets/eyes.png';
 import stars from '../../assets/stars.png';
-
+import { getAllQuestions } from '../../helpers/request';
 import styles from './Finish.module.scss';
-import { useEffect } from 'react';
 
 export default function Finish() {
-  const { allQuestions, loading, setCount } = useFormContext();
+  const [allQuestions, setAllQuestions] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const quantityRightQuestion = allQuestions.filter((el) => Number(el?.solutions?.[0]?.score)).length;
   const navigate = useNavigate();
+
+  const handleGetAllQuestions = async () => {
+    setLoading(true);
+    const { tasks } = await getAllQuestions();
+    if (tasks) {
+      setAllQuestions(tasks);
+    }
+    setLoading(false);
+  };
 
   const handleRating = () => {
     navigate(`/rating`);
   };
 
   useEffect(() => {
-    setCount((prev) => prev + 1);
+    handleGetAllQuestions();
   }, []);
 
   if (loading) {

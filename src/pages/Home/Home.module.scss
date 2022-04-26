@@ -58,7 +58,7 @@
     flex-grow: 1;
 
     @media (max-width: $tablet) {
-      width: 100%;
+      width: 80%;
     }
   }
 
@@ -67,6 +67,7 @@
     width: 60%;
     height: 120px;
     font-family: 'Latech';
+    font-size: 80px;
 
     @media (max-width: $tablet) {
       width: 100%;
