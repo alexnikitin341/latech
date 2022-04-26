@@ -39,13 +39,13 @@ export default function Rating() {
         <h1>Лидерборд</h1>
         <div className={styles.box}>
           <div className={styles.search}>
-            <input value={search} onChange={handleSearch} placeholder='Ведите имя' />
+            <input value={search} onChange={handleSearch} placeholder='Введите имя' />
             <img src={lupe} alt='lupe' />
           </div>
           <div className={styles.table}>
-            <p className={styles.title}>Место</p>
-            <p className={styles.title}>Участник</p>
-            <p className={styles.title}>Результат</p>
+            <p className={styles.title}>место</p>
+            <p className={styles.title}>участник</p>
+            <p className={styles.title}>результат</p>
 
             {[...rating].map(({ place, score, solutions, name }, i) => (
               <Fragment key={`place_${i}`}>
