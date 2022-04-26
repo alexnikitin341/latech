@@ -20,7 +20,6 @@ $tablet: 720px;
 }
 
 @mixin page_container {
-  width: 100vw;
   max-width: 100vw;
   min-height: 100vh;
   height: auto;
