@@ -5,27 +5,15 @@ import { getAllQuestions } from '../../helpers/request';
 import styles from './Description.module.scss';
 
 export default function Description() {
-  const [allQuestions, setAllQuestions] = useState([]);
-
   const navigate = useNavigate();
 
-  const handleGetAllQuestions = async () => {
+  const handleStartGame = async () => {
     const { tasks } = await getAllQuestions();
-    if (tasks) {
-      setAllQuestions(tasks);
-    }
-  };
-
-  const handleStartGame = () => {
-    const currenQuestionId = (allQuestions || []).find((el) => el?.solutions?.length === 0)?.id;
-    const firstQuestion = currenQuestionId || allQuestions?.[0]?.id;
+    const currenQuestionId = (tasks || []).find((el) => el?.solutions?.length === 0)?.id;
+    const firstQuestion = currenQuestionId || tasks?.[0]?.id;
 
     navigate(`/question/${firstQuestion}`);
   };
-
-  useEffect(() => {
-    handleGetAllQuestions();
-  }, []);
 
   return (
     <div className={styles.container}>
