@@ -1,18 +1,31 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useFormContext } from '../../helpers/context';
+import { getAllQuestions } from '../../helpers/request';
 
 import styles from './Description.module.scss';
 
 export default function Description() {
-  const { allQuestions } = useFormContext();
+  const [allQuestions, setAllQuestions] = useState([]);
+
   const navigate = useNavigate();
+
+  const handleGetAllQuestions = async () => {
+    const { tasks } = await getAllQuestions();
+    if (tasks) {
+      setAllQuestions(tasks);
+    }
+  };
 
   const handleStartGame = () => {
     const currenQuestionId = (allQuestions || []).find((el) => el?.solutions?.length === 0)?.id;
-    const firstQuestion = currenQuestionId || allQuestions?.[0]?.id || 5;
+    const firstQuestion = currenQuestionId || allQuestions?.[0]?.id;
 
     navigate(`/question/${firstQuestion}`);
   };
+
+  useEffect(() => {
+    handleGetAllQuestions();
+  }, []);
 
   return (
     <div className={styles.container}>
