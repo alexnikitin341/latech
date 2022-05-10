@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${GAME_NAME}
+spec:
+  replicas: ${REPLICAS}
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: ${GAME_NAME}
+  template:
+    metadata:
+      labels:
+        app: ${GAME_NAME}
+    spec:
+      imagePullSecrets:
+      - name: codenrock
+      containers:
+        - name: ${GAME_NAME}
+          image: ${IMAGE_NAME}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 128Mi
+            
+        # HACK: ALB has a race condition between deregistering endpoint and pod termination.
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "300"]
+      terminationGracePeriodSeconds: 180
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: ${GAME_NAME}
+  labels:
+    app: ${GAME_NAME}
+spec:
+  gateways:
+  - ${GATEWAY}
+  hosts:
+  - ${HOST_NAME}
+  http:
+  - match:
+    - uri:
+        prefix: ${URI}
+    rewrite:
+      uri: /
+    name: ${GAME_NAME}
+    route:
+    - destination:
+        host: ${GAME_NAME}
+        port:
+          number: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ${GAME_NAME}
+  name: ${GAME_NAME}
+spec:
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: ${GAME_NAME}
+  type: ClusterIP
