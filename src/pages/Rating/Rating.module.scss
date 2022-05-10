@@ -87,6 +87,7 @@
   @media (max-width: $tablet) {
     height: 500px;
     grid-template-columns: 2fr 3fr 2fr;
+    grid-template-rows: 30px repeat(auto-fill, 30px);
   }
 }
 
