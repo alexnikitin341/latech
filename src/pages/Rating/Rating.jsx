@@ -4,6 +4,7 @@ import { useDebounce } from '../../helpers/hooks';
 import lupe from '../../assets/lupe.svg';
 import stars_rating from '../../assets/stars_rating.png';
 import styles from './Rating.module.scss';
+import Loader from '../../components/Questions/Loader/Loader';
 
 export default function Rating() {
   const [rating, setRating] = useState([]);
@@ -30,7 +31,7 @@ export default function Rating() {
   }, [debouncedSearch]);
 
   if (loading) {
-    return <div className={styles.container}> ...loading</div>;
+    return <Loader />;
   }
 
   return (

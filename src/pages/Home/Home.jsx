@@ -6,11 +6,11 @@ import { useFormContext } from '../../helpers/context';
 import home_img from '../../assets/home_img.png';
 import latech_img from '../../assets/latech.png';
 import questions_img from '../../assets/questions.png';
-
+import Loader from '../../components/Questions/Loader/Loader';
 import styles from './Home.module.scss';
 
 export default function Home() {
-  const { allQuestions, loading } = useFormContext();
+  const { allQuestions, loading, setLoading } = useFormContext();
 
   const [token, setToken] = useState();
   const loaction = useLocation();
@@ -31,6 +31,8 @@ export default function Home() {
   }, []);
 
   const handleStartGame = async () => {
+    setLoading(true);
+
     if (token) {
       const data = await getMyContests();
       const isJoin = data.contests.some(({ id }) => id === GAME_ID);
@@ -50,10 +52,12 @@ export default function Home() {
     const authDomen = process.env.REACT_APP_AUTH_DOMEN;
     const authLink = `${authDomen}auth?redirect_to=${process.env.REACT_APP_URL}/description`;
     window.location.href = authLink;
+
+    setLoading(false);
   };
 
   if (loading) {
-    return <div className={styles.container}>...loading</div>;
+    return <Loader />;
   }
 
   return (

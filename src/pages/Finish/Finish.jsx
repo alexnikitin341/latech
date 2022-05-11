@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import eyes from '../../assets/eyes.png';
 import stars from '../../assets/stars.png';
 import { getAllQuestions } from '../../helpers/request';
+import Loader from '../../components/Questions/Loader/Loader';
 import styles from './Finish.module.scss';
 
 export default function Finish() {
@@ -30,11 +31,13 @@ export default function Finish() {
   }, []);
 
   if (loading) {
-    return <div className={styles.container}>...loading</div>;
+    return <Loader />;
   }
   return (
     <div className={styles.container}>
-      <h1>У тебя {quantityRightQuestion} правильных ответов!</h1>
+      <h1>
+        У тебя {quantityRightQuestion} {quantityRightQuestion === 1 ? 'правильный ответ' : 'правильных ответов'} !
+      </h1>
       <p>Супер! Теперь ты можешь посмотреть, где находишься в рейтинге среди остальных участников игры</p>
       <button className={styles.button_green} onClick={() => handleRating()}>
         <img src={eyes} alt='eyes' />

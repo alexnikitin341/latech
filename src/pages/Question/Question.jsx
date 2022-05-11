@@ -4,6 +4,7 @@ import { getQuestion, postAnswer } from '../../helpers/request';
 import { useFormContext } from '../../helpers/context';
 import styles from './Question.module.scss';
 import arrowRight from '../../assets/arrow_right.svg';
+import Loader from '../../components/Questions/Loader/Loader';
 
 export default function Question() {
   const [question, setQuestion] = useState({});
@@ -82,7 +83,7 @@ export default function Question() {
   }, [question]);
 
   if (loading) {
-    return <div className={styles.container}> ...loading</div>;
+    return <Loader />;
   }
 
   return (

@@ -1,19 +1,27 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Loader from '../../components/Questions/Loader/Loader';
 import { getAllQuestions } from '../../helpers/request';
 
 import styles from './Description.module.scss';
 
 export default function Description() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const handleStartGame = async () => {
+    setLoading(true);
     const { tasks } = await getAllQuestions();
     const currenQuestionId = (tasks || []).find((el) => el?.solutions?.length === 0)?.id;
     const firstQuestion = currenQuestionId || tasks?.[0]?.id;
 
     navigate(`/question/${firstQuestion}`);
+    setLoading(false);
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.container}>

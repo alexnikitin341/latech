@@ -14,6 +14,7 @@ $tablet: 720px;
   color: black;
   border-radius: 20px;
   border: none;
+  font-family: 'Latech';
   @media (max-width: $tablet) {
     font-size: 36px;
   }
@@ -29,4 +30,5 @@ $tablet: 720px;
   box-sizing: border-box;
   position: relative;
   color: white;
+  font-family: 'Latech';
 }
