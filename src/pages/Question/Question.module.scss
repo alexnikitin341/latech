@@ -2,7 +2,8 @@
 
 .container {
   @include page_container;
-  padding: 4%;
+  padding-top: 92px;
+  padding-bottom: 92px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -15,8 +16,8 @@
   }
 
   h2 {
-    font-size: 67.46px;
-    line-height: 86px;
+    font-size: transformPxToVw(67.46);
+    line-height: transformPxToVw(86);
     margin: 0;
     margin-bottom: 5%;
     @media (max-width: $tablet) {
@@ -138,8 +139,8 @@
   aspect-ratio: 537/490;
   box-sizing: border-box;
   color: black;
-  font-size: 33px;
-  line-height: 35px;
+  font-size: transformPxToVw(33);
+  line-height: transformPxToVw(35);
   font-weight: 600;
   padding: 50px 40px;
 
@@ -176,6 +177,10 @@
 
 .red {
   background: red;
+  background: black;
+  color: white;
+  box-sizing: border-box;
+  border: 2px solid $color-green;
 }
 
 .green {
@@ -207,8 +212,8 @@
 
   span {
     color: $color-green;
-    font-size: 67.46px;
-    line-height: 86px;
+    font-size: transformPxToVw(67.46);
+    line-height: transformPxToVw(86);
     @media (max-width: $tablet) {
       font-size: 35px;
       line-height: 86px;

@@ -121,7 +121,10 @@ export default function Question() {
       ) : (
         <div className={styles.answers_container}>
           {answersWithImg.map(({ src, option }, i) => (
-            <div key={`answers_${i}`} className={`${styles.answer_box} ${i === 1 && styles.center}`}>
+            <div
+              key={`answers_${i}`}
+              className={`${styles.answer_box} ${i === 1 && styles.center}`}
+            >
               <img src={src} alt={`img${option}`} onClick={() => handleClickAnswer(i)} />
               <p className={styles.option} onClick={() => handleClickAnswer(i)}>
                 {option}
