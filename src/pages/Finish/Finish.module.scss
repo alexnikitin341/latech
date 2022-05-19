@@ -2,9 +2,10 @@
 
 .container {
   @include page_container;
-  padding-bottom: 8.75%;
-  padding: 3.5% 96px 5%;
+
   max-width: 100vw;
+  padding-top: 86px;
+  padding-bottom: 96.15px;
 
   display: flex;
   overflow: hidden;
@@ -18,16 +19,16 @@
   h1 {
     color: white;
     width: 60%;
-    font-size: 3.6vw;
-    line-height: 4vw;
+    font-size: transformPxToVw(67.46);
+    line-height: transformPxToVw(86.01);
     font-weight: 300;
     z-index: 2;
-    margin-bottom: 120px;
+    margin-bottom: transformPxToVw(120);
 
     @media (max-width: $tablet) {
       width: 100%;
-      font-size: 25px;
-      line-height: 32px;
+      font-size: 27px;
+      line-height: 33.91px;
       margin-bottom: 47px;
     }
   }
@@ -35,8 +36,8 @@
   p {
     width: 60%;
     color: $color-green;
-    font-size: 3.6vw;
-    line-height: 4vw;
+    font-size: transformPxToVw(67.46);
+    line-height: transformPxToVw(86.01);
     z-index: 2;
     margin: 0;
     margin-bottom: 70px;
@@ -44,8 +45,8 @@
 
     @media (max-width: $tablet) {
       width: 100%;
-      font-size: 25px;
-      line-height: 32px;
+      font-size: 27px;
+      line-height: 33.91px;
       flex-grow: 0;
     }
   }
@@ -54,14 +55,16 @@
 .button_green {
   @include green_button;
   font-weight: 300;
-  font-size: 78px;
-  line-height: 46px;
+
   color: black;
-  border-radius: 20px;
+  border-radius: 17.47px;
   border: none;
-  width: 84%;
-  max-width: 586px;
-  height: 120px;
+
+  width: transformPxToVw(587.222);
+  height: transformPxToVw(120.7233);
+  font-size: transformPxToVw(81.64);
+  line-height: transformPxToVw(97.97);
+
   display: flex;
   align-items: center;
   align-self: flex-end;
@@ -88,7 +91,7 @@
   z-index: 1;
   width: 24%;
   top: 33%;
-  right: 16%;
+  right: 30%;
 
   @media (max-width: 1000px) {
     display: none;
