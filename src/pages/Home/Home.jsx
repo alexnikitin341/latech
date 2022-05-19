@@ -40,7 +40,8 @@ export default function Home() {
       if (!isJoin) {
         await joinToContest();
       }
-      const isFinished = allQuestions?.length > 0 && allQuestions.every((el) => el?.solutions?.length > 0);
+      const isFinished =
+        allQuestions?.length > 0 && allQuestions.every((el) => el?.solutions?.length > 0);
 
       if (isFinished) {
         return navigate('/finish');
@@ -62,7 +63,9 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <img className={styles.latech_img} src={latech_img} alt='latech_img' />
+      <div className={styles.latech_img}>
+        <img src={latech_img} alt='latech_img' />
+      </div>
       <img className={styles.questions_img} src={questions_img} alt='questions_img' />
       <div className={styles.box}>
         <img className={styles.home_img} src={home_img} alt='home_img' />
