@@ -2,8 +2,8 @@
 
 .container {
   @include page_container;
-  padding-bottom: 8.75%;
-  padding-top: 2%;
+  padding-bottom: $padding-bottom-container;
+  padding-top: 89px;
 
   display: flex;
   overflow: hidden;
@@ -18,10 +18,9 @@
 .description {
   width: 89%;
   box-sizing: border-box;
-  padding-left: 5%;
   margin: 0;
-  font-size: 42.44px;
-  line-height: 54px;
+  font-size: transformPxToVw(42.44);
+  line-height: transformPxToVw(54);
   @media (max-width: $tablet) {
     width: 100%;
     padding: 0;
@@ -34,7 +33,7 @@
 .box {
   width: 72%;
   box-sizing: border-box;
-  padding-left: 8%;
+  padding-left: 8.3vw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,14 +48,14 @@
     width: 71%;
     flex-grow: 1;
     p {
-      font-size: 67px;
-      line-height: 54px;
+      font-size: transformPxToVw(67);
+      line-height: transformPxToVw(54);
       margin: 0;
       margin-bottom: 7%;
     }
     span {
-      font-size: 42px;
-      line-height: 54px;
+      font-size: transformPxToVw(42);
+      line-height: transformPxToVw(54);
       color: $color-green;
     }
     @media (max-width: $tablet) {
@@ -77,8 +76,10 @@
 
 .button_green {
   @include green_button;
-  width: 83%;
-  height: 120px;
+  width: transformPxToVw(587.222);
+  height: transformPxToVw(120.7233);
+  font-size: transformPxToVw(81.64);
+  line-height: transformPxToVw(97.97);
 
   @media (max-width: $tablet) {
     width: 100%;

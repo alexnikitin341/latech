@@ -3,6 +3,17 @@ $color-black: #1b1b1e;
 
 $tablet: 720px;
 
+$padding-horizontal-container: 94px;
+$padding-top-container: 105px;
+$padding-top-container-question: 86px;
+$padding-bottom-container: 97px;
+
+$standart-width: 1920;
+
+@function transformPxToVw($px) {
+  @return $px * 100 / $standart-width * 1vw;
+}
+
 @mixin green_button {
   background: #cbff00;
   font-style: normal;
@@ -15,6 +26,7 @@ $tablet: 720px;
   border-radius: 20px;
   border: none;
   font-family: 'Latech';
+  box-sizing: border-box;
   @media (max-width: $tablet) {
     font-size: 36px;
   }
@@ -31,4 +43,6 @@ $tablet: 720px;
   position: relative;
   color: white;
   font-family: 'Latech';
+  padding-left: $padding-horizontal-container;
+  padding-right: $padding-horizontal-container;
 }
