@@ -50,7 +50,7 @@ export default function Home() {
     }
 
     const authDomen = process.env.REACT_APP_AUTH_DOMEN;
-    const authLink = `${authDomen}auth?redirect_to=${process.env.REACT_APP_URL}/description`;
+    const authLink = `${authDomen}auth?redirect_to=${process.env.REACT_APP_URL}description`;
     window.location.href = authLink;
 
     setLoading(false);

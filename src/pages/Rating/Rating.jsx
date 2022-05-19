@@ -44,10 +44,6 @@ export default function Rating() {
             <img src={lupe} alt='lupe' />
           </div>
           <div className={styles.table}>
-            <p className={styles.title}>место</p>
-            <p className={styles.title}>участник</p>
-            <p className={styles.title}>результат</p>
-
             {[...rating].map(({ place, score, solutions, name }, i) => (
               <Fragment key={`place_${i}`}>
                 <p className={place < 4 ? styles.green : ''}>{place}</p>
