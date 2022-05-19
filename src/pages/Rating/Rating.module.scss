@@ -21,7 +21,9 @@
 
 .container {
   @include page_container;
-  padding: 3.5% 5%;
+  // padding: 3.5% 5%;
+  padding-top: 86.2px;
+  padding-bottom: 94px;
   display: flex;
   flex-direction: column;
   @media (max-width: $tablet) {
@@ -31,29 +33,28 @@
 
   p {
     margin: 0;
-    margin-bottom: 15px;
-    font-size: 33px;
-    line-height: 15px;
+    font-size: transformPxToVw(29);
+    line-height: transformPxToVw(15);
     font-weight: 300;
-    height: 33px;
+    height: transformPxToVh(48);
     white-space: nowrap;
     @media (max-width: $tablet) {
       font-size: 18px;
       line-height: 15px;
       font-weight: 300;
-      height: 15px;
+      height: 30px;
     }
   }
 }
 
 .main_container {
   z-index: 3;
+  width: 100%;
+  height: 100%;
 }
 
 .box {
-  // border: 1px solid $color-green;
   width: 49.8%;
-  padding: 30px 0 30px 61px;
   height: 622px;
   z-index: 2;
   @media (max-width: 1400px) {
@@ -80,11 +81,12 @@
 .table {
   display: grid;
   grid-template-columns: 1fr 3fr 2fr;
-  grid-template-rows: 40px repeat(auto-fill, 40px);
-  height: 520px;
+  grid-template-rows: transformPxToVh(48) repeat(auto-fill, transformPxToVh(48));
+  height: transformPxToVh(528);
   width: 97%;
   overflow: auto;
   padding-top: 5px;
+  box-sizing: border-box;
   @media (max-width: $tablet) {
     height: 500px;
     grid-template-columns: 2fr 3fr 2fr;
@@ -110,14 +112,21 @@ h1 {
 
 .search {
   background-color: white;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  height: transformPxToVh(70);
+  box-sizing: border-box;
+
   border-radius: 15px;
   padding: 5px 10px;
   margin-bottom: 40px;
   width: 90%;
+
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  @media (max-width: $tablet) {
+    height: 70px;
+  }
 
   input {
     flex-grow: 1;
@@ -125,9 +134,10 @@ h1 {
     width: 100%;
     border: none;
     outline: none;
-    font-size: 32px;
+    font-size: 29px;
+    line-height: 15px;
     @media (max-width: $tablet) {
-      font-size: 22px;
+      font-size: 25px;
     }
   }
 

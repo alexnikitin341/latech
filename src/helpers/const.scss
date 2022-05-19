@@ -9,9 +9,14 @@ $padding-top-container-question: 86px;
 $padding-bottom-container: 97px;
 
 $standart-width: 1920;
+$standart-height: 1080;
 
 @function transformPxToVw($px) {
   @return $px * 100 / $standart-width * 1vw;
+}
+
+@function transformPxToVh($px) {
+  @return $px * 100 / $standart-height * 1vh;
 }
 
 @mixin green_button {
