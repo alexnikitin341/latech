@@ -21,14 +21,13 @@
 
 .container {
   @include page_container;
-  // padding: 3.5% 5%;
   padding-top: 86.2px;
   padding-bottom: 94px;
   display: flex;
   flex-direction: column;
   @media (max-width: $tablet) {
-    padding: 8% 10% 30px;
     flex-direction: column;
+    padding: 18.5% 8.7% 19.3%;
   }
 
   p {
@@ -39,10 +38,41 @@
     height: transformPxToVh(48);
     white-space: nowrap;
     @media (max-width: $tablet) {
-      font-size: 18px;
+      font-size: 17px;
       line-height: 15px;
       font-weight: 300;
       height: 30px;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    width: 100%;
+    font-size: 67.46px;
+    line-height: 86px;
+    font-weight: 300;
+    margin-bottom: transformPxToVh(120);
+
+    @media (max-width: $tablet) {
+      font-size: 27px;
+      line-height: 33.91px;
+      margin-bottom: 20px;
+    }
+  }
+
+  h2 {
+    display: none;
+
+    @media (max-width: $tablet) {
+      display: block;
+      font-size: 27px;
+      line-height: 33px;
+      font-weight: 300;
+      color: $color-green;
+      margin: 0;
+      display: flex;
+      align-items: flex-end;
+      flex-grow: 1;
     }
   }
 }
@@ -55,7 +85,7 @@
 
 .box {
   width: 49.8%;
-  height: 622px;
+  height: transformPxToVh(622);
   z-index: 2;
   @media (max-width: 1400px) {
     width: 90%;
@@ -64,7 +94,7 @@
     height: 580px;
     width: 100%;
     margin-top: 0px;
-    padding: 30px 5px;
+    padding: 30px 5px 0;
   }
 }
 
@@ -88,25 +118,9 @@
   padding-top: 5px;
   box-sizing: border-box;
   @media (max-width: $tablet) {
-    height: 500px;
+    height: 470px;
     grid-template-columns: 2fr 3fr 2fr;
     grid-template-rows: 30px repeat(auto-fill, 30px);
-  }
-}
-
-h1 {
-  // color: $color-green;
-  margin: 0;
-  width: 100%;
-  font-size: 67.46px;
-  line-height: 86px;
-  font-weight: 300;
-  margin-bottom: 120px;
-
-  @media (max-width: $tablet) {
-    font-size: 35px;
-    line-height: 37px;
-    margin-bottom: 30px;
   }
 }
 
@@ -125,7 +139,7 @@ h1 {
   overflow: hidden;
 
   @media (max-width: $tablet) {
-    height: 70px;
+    height: 55px;
   }
 
   input {
@@ -137,7 +151,8 @@ h1 {
     font-size: 29px;
     line-height: 15px;
     @media (max-width: $tablet) {
-      font-size: 25px;
+      font-size: 22px;
+      line-height: 15px;
     }
   }
 

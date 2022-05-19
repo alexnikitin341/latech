@@ -5,7 +5,6 @@ import { getMyContests, joinToContest } from '../../helpers/request';
 import { useFormContext } from '../../helpers/context';
 import home_img from '../../assets/home_img.png';
 import latech_img from '../../assets/latech.png';
-import questions_img from '../../assets/questions.png';
 import Loader from '../../components/Questions/Loader/Loader';
 import styles from './Home.module.scss';
 
@@ -66,7 +65,6 @@ export default function Home() {
       <div className={styles.latech_img}>
         <img src={latech_img} alt='latech_img' />
       </div>
-      <img className={styles.questions_img} src={questions_img} alt='questions_img' />
       <div className={styles.box}>
         <img className={styles.home_img} src={home_img} alt='home_img' />
         <button className={styles.button_green} onClick={() => handleStartGame()}>

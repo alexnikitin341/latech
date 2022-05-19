@@ -56,6 +56,7 @@ export default function Rating() {
           </div>
         </div>
       </div>
+      <h2>Благодарим за участие!</h2>
       <img className={styles.stars_rating} src={stars_rating} alt='stars_rating' />
     </div>
   );

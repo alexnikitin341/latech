@@ -9,7 +9,7 @@
   @media (max-width: $tablet) {
     flex-direction: column;
     align-items: center;
-    padding: 8% 10% 0;
+    padding: 19.8% 8.7% 19.3%;
   }
 }
 .latech_img {
@@ -23,8 +23,7 @@
   }
 
   @media (max-width: $tablet) {
-    width: 82%;
-    margin-bottom: 31%;
+    width: 87.2%;
     padding: 0;
     align-self: flex-start;
   }
@@ -50,9 +49,10 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 152px;
+  flex-grow: 1;
 
   @media (max-width: $tablet) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     width: 100%;
     padding: 0;
   }
@@ -62,7 +62,7 @@
     object-fit: contain;
 
     @media (max-width: $tablet) {
-      width: 80%;
+      width: 100%;
     }
   }
 
@@ -78,7 +78,11 @@
     @media (max-width: $tablet) {
       width: 100%;
       height: 71px;
-      margin-bottom: 17%;
+      font-size: 48.38px;
+      line-height: 58.06px;
+      font-weight: 300;
+      box-sizing: border-box;
+      padding: 0;
     }
   }
 }

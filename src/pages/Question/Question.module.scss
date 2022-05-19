@@ -2,16 +2,14 @@
 
 .container {
   @include page_container;
-  padding-top: 92px;
-  padding-bottom: 92px;
+  padding-top: 87px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   width: auto;
 
   @media (max-width: $tablet) {
-    align-items: center;
-    padding: 8% 10% 30px;
+    padding: 19.3% 8.7% 17.6%;
     width: 100vw;
   }
 
@@ -25,6 +23,16 @@
       line-height: 33px;
     }
   }
+
+  span {
+    color: $color-green;
+    font-size: transformPxToVw(67.46);
+    line-height: transformPxToVw(86);
+    @media (max-width: $tablet) {
+      font-size: 35px;
+      line-height: 86px;
+    }
+  }
 }
 
 .answers_container {
@@ -35,11 +43,26 @@
     margin: 0 60px;
   }
 
+  span {
+    display: none;
+  }
+
   @media (max-width: $tablet) {
     flex-direction: column;
+    flex-grow: 1;
 
     .center {
       margin: 20px 0;
+    }
+
+    span {
+      color: $color-green;
+      font-size: transformPxToVw(67.46);
+      line-height: transformPxToVw(86);
+      @media (max-width: $tablet) {
+        font-size: 35px;
+        line-height: 86px;
+      }
     }
   }
 }
@@ -75,7 +98,8 @@
     background-color: rgb(249, 249, 249);
 
     @media (max-width: $tablet) {
-      width: 53%;
+      width: 50.8%;
+      aspect-ratio: 173/165;
     }
   }
 }
@@ -98,6 +122,7 @@
     width: 42%;
     padding: 0;
     margin: 0;
+    display: none;
   }
 }
 
@@ -145,17 +170,18 @@
   padding: 50px 40px;
 
   @media (max-width: $tablet) {
-    width: 54%;
+    width: 100%;
     font-size: 12px;
     line-height: 15px;
     padding: 20px 8px;
+    aspect-ratio: 346/165;
   }
 }
 
 .option_comment {
   display: none;
   @media (max-width: $tablet) {
-    display: flex;
+    display: none;
   }
 }
 

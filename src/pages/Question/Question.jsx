@@ -10,7 +10,7 @@ export default function Question() {
   const [question, setQuestion] = useState({});
   const [changedQuestionIndex, setChangeQuestionIndex] = useState();
   const { allQuestions, setCount } = useFormContext();
-  const [answersWithImg, setAnswersWithImg] = useState([]);
+  const [answersWithImg, setAnswersWithImg] = useState();
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -78,14 +78,13 @@ export default function Question() {
         option,
         src: srcs[i],
       }));
-      setAnswersWithImg(res);
+      setAnswersWithImg();
     }
   }, [question]);
 
   if (loading) {
     return <Loader />;
   }
-
   return (
     <div className={styles.container}>
       <h2>{question?.task?.name}</h2>
@@ -131,6 +130,10 @@ export default function Question() {
               </p>
             </div>
           ))}
+          <span>
+            {(allQuestions || []).findIndex((question) => +question.id === +id) + 1}
+            /15
+          </span>
         </div>
       )}
     </div>
