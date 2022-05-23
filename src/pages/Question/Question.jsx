@@ -10,7 +10,7 @@ export default function Question() {
   const [question, setQuestion] = useState({});
   const [changedQuestionIndex, setChangeQuestionIndex] = useState();
   const { allQuestions, setCount } = useFormContext();
-  const [answersWithImg, setAnswersWithImg] = useState();
+  const [answersWithImg, setAnswersWithImg] = useState([]);
   const [answer, setAnswer] = useState();
   const [loading, setLoading] = useState(false);
 
@@ -78,7 +78,7 @@ export default function Question() {
         option,
         src: srcs[i],
       }));
-      setAnswersWithImg();
+      setAnswersWithImg(res);
     }
   }, [question]);
 

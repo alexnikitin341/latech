@@ -21,6 +21,7 @@
 
 .container {
   @include page_container;
+  max-height: 100vh;
   padding-top: 86.2px;
   padding-bottom: 94px;
   display: flex;

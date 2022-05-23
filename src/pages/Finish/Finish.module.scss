@@ -3,7 +3,7 @@
 .container {
   @include page_container;
 
-  max-width: 100vw;
+  max-height: 100vh;
   padding-top: 86px;
   padding-bottom: 96.15px;
 
@@ -71,7 +71,7 @@
   z-index: 1;
   width: 24%;
   top: 33%;
-  right: 30%;
+  right: 23%;
 
   img {
     width: 100%;

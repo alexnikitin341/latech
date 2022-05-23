@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Loader from '../../components/Questions/Loader/Loader';
-import { getAllQuestions } from '../../helpers/request';
-
+import { GAME_ID } from '../../helpers/consts';
+import { useFormContext } from '../../helpers/context';
+import { getAllQuestions, getMyContests, joinToContest } from '../../helpers/request';
 import styles from './Description.module.scss';
 
 export default function Description() {
+  const { allQuestions } = useFormContext();
+
   const [loading, setLoading] = useState(false);
 
   const loaction = useLocation();
@@ -22,6 +25,30 @@ export default function Description() {
 
   const handleStartGame = async () => {
     setLoading(true);
+
+    const token = localStorage.getItem('tokenId');
+
+    if (!token) {
+      const authDomen = process.env.REACT_APP_AUTH_DOMEN;
+      const authLink = `${authDomen}auth?redirect_to=${process.env.REACT_APP_URL}description`;
+      window.location.href = authLink;
+      return;
+    }
+
+    const data = await getMyContests();
+    const isJoin = data.contests.some(({ id }) => id === GAME_ID);
+
+    if (!isJoin) {
+      await joinToContest();
+    }
+
+    const isFinished =
+      allQuestions?.length > 0 && allQuestions.every((el) => el?.solutions?.length > 0);
+
+    if (isFinished) {
+      return navigate('/finish');
+    }
+
     const { tasks } = await getAllQuestions();
     const currenQuestionId = (tasks || []).find((el) => el?.solutions?.length === 0)?.id;
     const firstQuestion = currenQuestionId || tasks?.[0]?.id;
