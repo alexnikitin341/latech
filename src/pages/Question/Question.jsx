@@ -110,7 +110,7 @@ export default function Question() {
           <div className={styles.next_question}>
             <span>
               {(allQuestions || []).findIndex((question) => +question.id === +id) + 1}
-              /15
+              /30
             </span>
             <button className={styles.button_green} onClick={goToNextQuestion}>
               <img src={arrowRight} alt='arrowRight' />
