@@ -86,7 +86,7 @@ export default function Description() {
         </div>
 
         <button className={styles.button_green} onClick={() => handleStartGame()}>
-          ИГРАТЬ
+          играть
         </button>
       </div>
     </div>
